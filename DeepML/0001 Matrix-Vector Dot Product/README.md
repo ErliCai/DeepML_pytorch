@@ -18,22 +18,22 @@ Output:
 Reasoning:
 Row 1: (1 * 1) + (2 * 2) = 1 + 4 = 5; Row 2: (2 * 1) + (4 * 2) = 2 + 8 = 10
 
-## Explaination
+## Explanation
 
-We are essentially implementing matrix multiplication for the special case where first matrix is 2d and second matrix is 1d.
+We are essentially implementing matrix multiplication for the special case where the first input is a 2-D matrix and the second input is a 1-D vector.
 
-Pytorch has build in function matmul and mv that both satisfy the requirement, or you can simply use the @ operator (example usage below)
+PyTorch has built-in functions like `matmul` and `mv` that satisfy this requirement. You can also use the `@` operator.
 
-```
+```python
 a = torch.tensor([[1, 2], [2, 4]])
 b = torch.tensor([1, 2])
 
-torch.matmul(a,b)
-torch.mv(a,b)
-a@b
+torch.matmul(a, b)
+torch.mv(a, b)
+a @ b
 ```
 
 ## Solution
 
-We simply loop over the first dimension of the matrix, treating each row as one vector. For each row, we multiply its values with the matching values in the input vector, sum those products, and store the result in the output vector.
+We loop over the first dimension of the matrix, treating each row as one vector. For each row, we multiply its values with the matching values in the input vector, sum those products, and store the result in the output vector.
 
