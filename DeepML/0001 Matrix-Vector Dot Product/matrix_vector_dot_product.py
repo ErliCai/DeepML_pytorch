@@ -18,19 +18,3 @@ def matrix_dot_vector(a, b) -> torch.Tensor:
         result[i] = sum(a_t[i,j] * b_t[j] for j in range(a_t.size(1)))
 
     return result
-
-
-
-if __name__ == "__main__":
-
-    a = [[1, 2], [2, 4]]
-    b = [1, 2]
-
-    result = matrix_dot_vector(a, b)
-    print(result)
-
-
-    a = [[1,2,3],[2,4,5],[6,8,9]]
-    b = [1,2,3]
-    result =  matrix_dot_vector(a, b)
-    print(result) 
