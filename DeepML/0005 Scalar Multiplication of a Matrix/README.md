@@ -13,8 +13,17 @@ Output:
 
 ## Explanation
 
-TODO: Add a high-level explanation of scalar multiplication of a matrix.
+Scalar multiplication means multiplying every element in the matrix by the same scalar value. In PyTorch, this can be done directly because tensor operations are applied element by element.
+
+```python
+matrix = torch.tensor([[1, 2], [3, 4]], dtype=torch.float)
+scalar = 2
+
+matrix * scalar  # tensor([[2., 4.], [6., 8.]])
+```
 
 ## Solution
 
-TODO: Briefly explain the implemented approach.
+Too easy I don't even want to explain
+
+We first convert the input matrix into a PyTorch tensor and create an empty result tensor with the same shape. Then we loop through each row and column, multiply each value by the scalar, and store it in the matching position of the result.

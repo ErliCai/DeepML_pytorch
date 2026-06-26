@@ -8,5 +8,10 @@ def scalar_multiply(matrix, scalar) -> torch.Tensor:
     """
     # Convert input to tensor
     m_t = torch.as_tensor(matrix, dtype=torch.float)
-    # Your implementation here
-    pass
+    
+    result = torch.empty(m_t.shape)
+    for i in range(len(m_t)):
+        for j in range(len(m_t[0])):
+            result[i][j] = m_t[i][j] * scalar
+
+    return result
