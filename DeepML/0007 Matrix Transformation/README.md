@@ -13,8 +13,9 @@ Output:
 
 ## Explanation
 
-TODO
+This is called change of basis in linear algebra, check out this video [
+Change of basis | Chapter 13, Essence of linear algebra](https://www.youtube.com/watch?v=P2LTAUO1TdA) from 3Blue1Brown for the mathematical implication of change of basis 
 
 ## Solution
 
-TODO: Briefly explain the implemented approach.
+First check if T and S are invertible by computing their determinants — if either is zero, return -1. Otherwise, compute T⁻¹ using `torch.linalg.inv` and return the matrix product `T⁻¹ @ A @ S`.

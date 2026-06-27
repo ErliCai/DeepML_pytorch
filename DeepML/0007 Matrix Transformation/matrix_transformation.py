@@ -14,7 +14,7 @@ def transform_matrix(A, T, S) -> torch.Tensor:
     det_S = torch.linalg.det(S_t)
 
     if det_S == 0 or det_T == 0:
-        return -1
+        return torch.tensor(-1)
     
     T_inverse = torch.linalg.inv(T_t)
 
