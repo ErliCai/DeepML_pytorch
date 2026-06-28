@@ -17,8 +17,8 @@ Output:
 
 ## Explanation
 
-TODO
+Just matrix multiplication, nothing to explain here
 
 ## Solution
 
-TODO: Briefly explain the implemented approach.
+Just matrix multiplication, nothing to explain here
