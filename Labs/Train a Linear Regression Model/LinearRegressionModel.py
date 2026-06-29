@@ -19,18 +19,20 @@ def train(X, y, W, b):
     # momentum, adaptive learning rates, mini-batching, etc.
 
     # learning_rate = 0.001
-    # for i in range(len(X)):
-    #     prediction = np.dot(X[i], W) + b
-    #     loss = prediction - y[i]
+    # for j in range(3):
+    #     for i in range(len(X)):
+    #         prediction = np.dot(X[i], W) + b
+    #         loss = prediction - y[i]
 
-    #     W = W - learning_rate * 2 * X[i] * loss
-    #     b = b - learning_rate * 2 * loss
+    #         W = W - learning_rate * 2 * X[i] * loss
+    #         b = b - learning_rate * 2 * loss
+    # return W, b
 
     learning_rate = 0.001
-    epoch = 100
+    epoch = 1000
     n = len(X)
     for i in range(epoch):
-        prediction = W @ X + b
+        prediction = X @ W + b
         error = (prediction - y)
 
         W = W - learning_rate * (2 / n) * (X.T @ error)
