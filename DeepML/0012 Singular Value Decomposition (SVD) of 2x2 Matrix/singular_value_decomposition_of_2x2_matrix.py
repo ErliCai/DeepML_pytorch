@@ -24,7 +24,5 @@ def svd_2x2_singular_values(A: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor
     U = U.real
     Vt = Vt.real
 
-    print(U @ S @ Vt)
-
     return U, S, Vt
 
