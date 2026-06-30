@@ -10,7 +10,8 @@ def solve_jacobi(A, b, n) -> torch.Tensor:
     b_t = torch.as_tensor(b, dtype=torch.float)
 
     jacobi = torch.zeros_like(A_t)
-    D = [b_t[i]/A_t[i][i] for i in len(A_t)]
+    D = [b_t[i]/A_t[i][i] for i in range(len(A_t))]
+    D = torch.tensor(D)
 
     for i in range(len(A_t)):
         for j in range(len(A_t)):
