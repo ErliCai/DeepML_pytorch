@@ -17,7 +17,23 @@ Output:
 
 ## Explanation
 
-TODO
+The Normal Equation is the closed-form solution to linear regression — instead of iteratively nudging weights toward the minimum (gradient descent), it solves for the optimal weights directly using linear algebra.
+
+Linear regression minimizes the MSE loss:
+
+$$L(w) = \frac{1}{n}\|y - Xw\|^2$$
+
+This is smooth and convex, so the minimum occurs where the gradient is zero. Taking the derivative with respect to $w$ and setting it to zero gives:
+
+$$X^T X w = X^T y$$
+
+Solving for $w$:
+
+$$w = (X^T X)^{-1} X^T y$$
+
+We can't simply solve $w = X^{-1}y$ because $X$ is rarely square — with more samples (rows) than features (columns), the system is overdetermined, so $X^{-1}$ doesn't exist. $X^T X$, however, is always square ($n\_features \times n\_features$) and invertible as long as the features are linearly independent, so it gives the least-squares best fit even when no exact solution exists.
+
+In the example, $X$'s first column of 1s is the bias term and the second column is the feature $x = [1,2,3]$. Since $y = [1,2,3]$ matches $x$ exactly, the perfect fit is $y = x$, giving $w_0 = 0$ and $w_1 = 1$.
 
 ## Solution
 

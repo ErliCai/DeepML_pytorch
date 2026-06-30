@@ -9,6 +9,8 @@ def test_normal_equation():
 
     result = linear_regression_normal_equation(X, y)
 
+    print(result)
+
     assert torch.allclose(result, torch.tensor([0.0, 1.0]), atol=1e-4)
 
 

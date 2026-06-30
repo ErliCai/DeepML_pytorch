@@ -8,5 +8,5 @@ def linear_regression_normal_equation(X, y) -> torch.Tensor:
     """
     X_t = torch.as_tensor(X, dtype=torch.float)
     y_t = torch.as_tensor(y, dtype=torch.float).reshape(-1,1)
-    # Your implementation here
-    pass
+
+    return (torch.linalg.inv((X_t.T @ X_t)) @ X_t.T @ y_t).T
