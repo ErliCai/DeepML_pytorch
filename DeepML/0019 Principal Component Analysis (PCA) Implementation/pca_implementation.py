@@ -27,5 +27,4 @@ def pca(data, k) -> torch.Tensor:
         if nonzero.numel() > 0 and nonzero[0].item() < 0:
             result[:, i] = -component
 
-    print(result)
     return result
