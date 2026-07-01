@@ -1,3 +1,5 @@
+import torch
+
 from k_means_clustering import k_means_clustering
 
 
@@ -9,7 +11,7 @@ def test_k_means_clustering():
 
     result = k_means_clustering(points, k, initial_centroids, max_iterations)
 
-    assert result == [(1, 2), (10, 2)]
+    assert torch.allclose(result, torch.tensor([[1.0, 2.0], [10.0, 2.0]]), atol=1e-4)
 
 
 if __name__ == "__main__":
