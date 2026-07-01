@@ -12,5 +12,7 @@ def k_means_clustering(points, k, initial_centroids, max_iterations) -> list[tup
     points_t = torch.as_tensor(points, dtype=torch.float)
     centroids = torch.as_tensor(initial_centroids, dtype=torch.float)
 
-
-    pass
+    grouping = []
+    for point_t in points_t:
+        # calculate distance from all centroid
+        distances = [torch.dist(centroids[i], point_t) for i in range(k)]
