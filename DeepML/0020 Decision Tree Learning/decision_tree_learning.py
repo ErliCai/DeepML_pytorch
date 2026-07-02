@@ -1,22 +1,52 @@
+import torch
 import math
 from collections import Counter
+from typing import List, Dict, Any, Union
 
-def calculate_entropy(labels: list) -> float:
-    """Calculate the entropy of a list of labels."""
-    # Your code here
+
+def calculate_entropy(labels: List[Any]) -> float:
+    """
+    Compute the Shannon entropy of the list of labels.
+    labels: list of any hashable items.
+    Returns a Python float.
+    """
+    # Your implementation here
     pass
 
-def calculate_information_gain(examples: list[dict], attr: str, target_attr: str) -> float:
-    """Calculate the information gain of splitting on attr."""
-    # Your code here
+
+def calculate_information_gain(
+    examples: List[Dict[str, Any]],
+    attr: str,
+    target_attr: str
+) -> float:
+    """
+    Compute information gain for splitting `examples` on `attr` w.r.t. `target_attr`.
+    Returns a Python float.
+    """
+    # Your implementation here
     pass
 
-def majority_class(examples: list[dict], target_attr: str) -> str:
-    """Return the majority class. Break ties alphabetically."""
-    # Your code here
+
+def majority_class(
+    examples: List[Dict[str, Any]],
+    target_attr: str
+) -> Any:
+    """
+    Return the most common value of `target_attr` in `examples`.
+    In case of a tie, return the class that comes first alphabetically.
+    """
+    # Your implementation here
     pass
 
-def learn_decision_tree(examples: list[dict], attributes: list[str], target_attr: str) -> dict:
-    """Build a decision tree using the ID3 algorithm."""
-    # Your code here
+
+def learn_decision_tree(
+    examples: List[Dict[str, Any]],
+    attributes: List[str],
+    target_attr: str
+) -> Union[Dict[str, Any], Any]:
+    """
+    Learn a decision tree using the ID3 algorithm.
+    Returns either a nested dict representing the tree or a class label at the leaves.
+    """
+    # Your implementation here
     pass
