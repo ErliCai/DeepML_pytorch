@@ -1,15 +1,12 @@
 import torch
+from typing import List
 
-def transform_basis(B: list[list[float]], C: list[list[float]]) -> list[list[float]]:
+
+def transform_basis(B: List[List[float]], C: List[List[float]]) -> List[List[float]]:
+    """Return the change-of-basis matrix **P = C⁻¹ B**.
+
+    - *B*, *C* may be 2×2 or 3×3 nested lists.
+    - Result is rounded to 4 decimals and returned as a nested list.
     """
-    Computes the transformation matrix from basis B to basis C.
-
-    Args:
-        B: Matrix whose columns are basis vectors of B
-        C: Matrix whose columns are basis vectors of C
-
-    Returns:
-        Transformation matrix from B to C, rounded to 4 decimal places
-    """
-    # Your code here
+    # Your implementation here
     pass
