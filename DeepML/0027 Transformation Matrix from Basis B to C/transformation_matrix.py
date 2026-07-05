@@ -9,4 +9,11 @@ def transform_basis(B: List[List[float]], C: List[List[float]]) -> List[List[flo
     - Result is rounded to 4 decimals and returned as a nested list.
     """
     # Your implementation here
-    pass
+
+    B_t = torch.tensor(B, dtype=torch.float)
+    C_t = torch.tensor(C, dtype=torch.float)
+
+    result = torch.inverse(C_t) @ B_t
+    result = result.tolist()
+
+    return [[round(i, 4) for i in row] for row in result]
