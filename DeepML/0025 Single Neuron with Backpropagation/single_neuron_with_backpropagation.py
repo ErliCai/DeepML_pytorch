@@ -17,5 +17,28 @@ def train_neuron(features: torch.Tensor, labels: torch.Tensor, initial_weights: 
     Returns:
         Tuple of (updated_weights, updated_bias, mse_values) all rounded to 4 decimal places
     """
-    # Your code here
-    pass
+    weights = initial_weights.clone().requires_grad_(True)
+    bias = torch.tensor(initial_bias, requires_grad=True)
+
+    mse = []
+
+    for _ in range(epochs):
+
+        z = features @ weights + bias
+        sigmoids = torch.sigmoid(z)
+
+        loss = nn.functional.mse_loss(sigmoids, labels)
+        mse.append(round(loss.item(),4))
+        loss.backward()
+        with torch.no_grad():
+            weights -= learning_rate * weights.grad
+            bias -= learning_rate * bias.grad
+            weights.grad.zero_()
+            bias.grad.zero_()
+
+    updated_weights = [round(weight, 4) for weight in weights.tolist()]
+    updated_bias = round(bias.item(),4)
+
+    # print(updated_weights, updated_bias, mse)
+
+    return updated_weights, updated_bias, mse

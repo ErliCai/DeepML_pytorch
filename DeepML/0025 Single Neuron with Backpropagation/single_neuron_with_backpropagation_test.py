@@ -1,12 +1,13 @@
 import math
+import torch
 
 from single_neuron_with_backpropagation import train_neuron
 
 
 def test_single_neuron_with_backpropagation():
-    features = [[1.0, 2.0], [2.0, 1.0], [-1.0, -2.0]]
-    labels = [1, 0, 0]
-    initial_weights = [0.1, -0.2]
+    features = torch.tensor([[1.0, 2.0], [2.0, 1.0], [-1.0, -2.0]])
+    labels = torch.tensor([1, 0, 0], dtype=torch.float32)
+    initial_weights = torch.tensor([0.1, -0.2])
     initial_bias = 0.0
     learning_rate = 0.1
     epochs = 2
