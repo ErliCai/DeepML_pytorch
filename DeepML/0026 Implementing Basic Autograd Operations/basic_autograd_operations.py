@@ -32,22 +32,25 @@ class Value:
     def __add__(self, other):
         # Implement addition. Coerce `other` to a Value via self._wrap,
         # then build a new Value whose underlying tensor is self._t + other._t.
-        pass
+        other = self._wrap(other)
+        return Value(0, self._t + other._t)
 
     __radd__ = __add__
 
     def __mul__(self, other):
         # Implement multiplication using self._t and other._t.
-        pass
+        other = self._wrap(other)
+        return Value(0, self._t * other._t)
 
     __rmul__ = __mul__
 
     # ------- activation -------
     def relu(self):
         # Implement ReLU using torch.relu on self._t.
-        pass
+        
+        return Value(0, torch.relu(self._t))
 
     # ------- back-prop entry -------
     def backward(self):
         # Trigger PyTorch autograd on the underlying tensor.
-        pass
+        self._t.backward()
