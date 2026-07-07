@@ -16,5 +16,14 @@ def get_random_subsets(X, y, n_subsets, replacements=True) -> list:
     Returns:
         List of (X_subset, y_subset) tuples
     """
-    # Your code here
-    pass
+
+    X = np.asarray(X)
+    y = np.asarray(y)
+
+    n = len(X)
+    size = n if replacements else n//2
+    out = []
+    for _ in range(n_subsets):
+        idx = np.random.choice(n, size, replacements)
+        out.append((X[idx].tolist(), y[idx].tolist()))
+    return out
