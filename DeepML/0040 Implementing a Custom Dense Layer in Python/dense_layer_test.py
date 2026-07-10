@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 
 from dense_layer import Dense
 
@@ -8,6 +9,12 @@ class MockOptimizer:
         return weights - 0.01 * grad
 
 
+def _to_numpy(x):
+    if isinstance(x, torch.Tensor):
+        return x.detach().cpu().numpy()
+    return np.asarray(x)
+
+
 def test_dense_layer():
     dense_layer = Dense(n_units=3, input_shape=(2,))
 
@@ -15,14 +22,14 @@ def test_dense_layer():
     dense_layer.initialize(optimizer)
 
     X = np.array([[1, 2]])
-    output = dense_layer.forward_pass(X)
+    output = _to_numpy(dense_layer.forward_pass(X))
     print("Forward pass output:", output)
     assert np.allclose(
         output, np.array([[-0.00655782, 0.01429615, 0.00905812]]), atol=1e-4
     )
 
     accum_grad = np.array([[0.1, 0.2, 0.3]])
-    back_output = dense_layer.backward_pass(accum_grad)
+    back_output = _to_numpy(dense_layer.backward_pass(accum_grad))
     print("Backward pass output:", back_output)
     assert np.allclose(
         back_output, np.array([[0.00129588, 0.00953634]]), atol=1e-4
