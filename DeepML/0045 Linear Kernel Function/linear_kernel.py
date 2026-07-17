@@ -1,19 +1,16 @@
 import torch
-from numpy import ndarray
-from typing import Union
 
-def linear_kernel(x1: Union[torch.Tensor, list, ndarray],
-                  x2: Union[torch.Tensor, list, ndarray]) -> float:
+def kernel_function(x1: torch.Tensor, x2: torch.Tensor) -> torch.Tensor:
     """
-    Compute the linear kernel between two vectors.
-
+    Computes the linear kernel between two input vectors.
+    The linear kernel is defined as the dot product (inner product) of two vectors.
+    
     Args:
-        x1: First input vector.
-        x2: Second input vector.
-
+        x1: First input tensor (1D vector)
+        x2: Second input tensor (1D vector)
+    
     Returns:
-        Scalar dot product of x1 and x2.
+        Scalar tensor representing the linear kernel (dot product)
     """
 
-    # TODO
-    pass
+    return torch.dot(x1,x2)
