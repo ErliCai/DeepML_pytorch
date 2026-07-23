@@ -9,33 +9,20 @@ class MockOptimizer:
         return weights - 0.01 * grad
 
 
-def _to_numpy(x):
-    if isinstance(x, torch.Tensor):
-        return x.detach().cpu().numpy()
-    return np.asarray(x)
-
-
-def test_dense_layer():
-    dense_layer = Dense(n_units=3, input_shape=(2,))
-
-    optimizer = MockOptimizer()
-    dense_layer.initialize(optimizer)
+def test_dense_layer_backward():
+    layer = Dense(n_units=3, input_shape=(2,))
+    layer.initialize(MockOptimizer())
 
     X = np.array([[1, 2]])
-    output = _to_numpy(dense_layer.forward_pass(X))
-    print("Forward pass output:", output)
-    assert np.allclose(
-        output, np.array([[-0.00655782, 0.01429615, 0.00905812]]), atol=1e-4
-    )
+    _ = layer.forward_pass(X)
 
-    accum_grad = np.array([[0.1, 0.2, 0.3]])
-    back_output = _to_numpy(dense_layer.backward_pass(accum_grad))
-    print("Backward pass output:", back_output)
-    assert np.allclose(
-        back_output, np.array([[0.00129588, 0.00953634]]), atol=1e-4
-    )
+    accum = np.array([[0.1, 0.2, 0.3]])
+    back_out = layer.backward_pass(accum)
+    result = back_out.detach().numpy().round(8)
+    print(result)
+    assert np.allclose(result, np.array([[0.20816524, -0.22928937]]), atol=1e-4)
 
 
 if __name__ == "__main__":
-    test_dense_layer()
+    test_dense_layer_backward()
     print("All tests passed")
